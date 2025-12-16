@@ -1,0 +1,6 @@
+<app-header></app-header>
+<router-outlet></router-outlet>
+
+<div *ngIf="loading$ | async" class="loader-overlay">
+  <div class="simple-loader"></div>
+</div>

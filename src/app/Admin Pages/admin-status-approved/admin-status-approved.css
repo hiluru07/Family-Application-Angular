@@ -1,0 +1,72 @@
+.user-card {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 18px;
+  border: 1px solid #e5e5e5;
+  gap: 20px;
+  transition: 0.3s ease-in-out;
+}
+
+.user-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Bigger Profile */
+.profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #cfd8dc;
+}
+
+/* Bigger Info */
+.info-box {
+  flex-grow: 1;
+}
+
+/* Bigger & Attractive Status Badge */
+.status-badge {
+  margin-top: 6px;
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.pending {
+  background: #fff3cd;
+  color: #8a6d3b;
+}
+
+.approved {
+  background: #d4edda;
+  color: #155724;
+}
+
+.rejected {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* Bigger Buttons */
+.action-box {
+  display: flex;
+  gap: 12px;
+}
+
+.action-btn {
+  width: 48px;
+  height: 48px;
+  font-size: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

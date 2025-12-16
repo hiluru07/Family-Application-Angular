@@ -1,0 +1,109 @@
+<div class="container py-4">
+  <!-- TOP HEADER -->
+  <div class="header-box shadow-lg mb-4">
+    <h3 class="text-white fw-bold m-0">
+      <i class="bi bi-people-fill icon-white me-2"></i>Vavanna Family Members
+    </h3>
+    <button class="btn admin-btn" data-bs-toggle="modal" data-bs-target="#adminModal">
+      <i class="bi bi-person-badge icon-admin me-1"></i> Admin Info
+    </button>
+  </div>
+
+  <!-- ADMIN MODAL -->
+  <div class="modal fade" id="adminModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 modal-glass">
+        <div class="modal-header admin-head text-white">
+          <h5 class="modal-title">
+            <i class="bi bi-person-lines-fill icon-admin me-2"></i> Admin Info
+          </h5>
+          <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-center p-4">
+          <img
+            [src]="adminData.profileImage ? 'https://localhost:7093/Images/'+adminData.profileImage : 'assets/defaultImage.jpg'"
+            class="admin-img mb-3" />
+          <h4 class="fw-bold admin-name">
+            <i class="bi bi-person-circle icon-admin me-1"></i> {{adminData.fname}} {{adminData.lname}}
+          </h4>
+          <div class="info-line">
+            <i class="bi bi-telephone-fill icon-phone me-2"></i> {{adminData.phone}}
+          </div>
+          <div class="info-line">
+            <i class="bi bi-envelope-fill icon-email me-2"></i> {{adminData.email}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEARCH BAR -->
+  <div class="search-card shadow mb-4">
+    <i class="bi bi-search icon-search me-2"></i>
+    <input type="text" placeholder="Search family heads or members..." (input)="searchData($event.target.value)">
+  </div>
+  <div *ngIf="array.length>0; else nodata">
+    <!-- FAMILY CARDS -->
+    <div *ngFor="let item of array" class="family-card shadow-lg mb-4">
+
+      <!-- FAMILY HEAD -->
+      <div class="family-head d-flex align-items-center">
+        <img
+          [src]="item.profileImage ? 'https://localhost:7093/Images/'+item.profileImage : 'https://localhost:7093/DefaultImage/DefaultImage.jpg'"
+          class="family-head-img" />
+
+        <div class="ms-3">
+          <h4 class="fw-bold family-head-name m-0">
+            <i class="bi bi-person-fill icon-name me-1"></i> {{item.familyHeadFName | uppercase}} {{item.familyHeadLName
+            | uppercase}}
+          </h4>
+          <small class="d-block family-head-phone">
+            <i class="bi bi-telephone-outbound icon-phone me-1"></i> {{item.phone}}
+          </small>
+          <small class="d-block family-head-email">
+            <i class="bi bi-envelope-check icon-email me-1"></i> {{item.email}}
+          </small>
+        </div>
+        <span class="role-tag ms-auto">
+          <i class="bi bi-shield-check icon-role me-1"></i> {{item.role}}
+        </span>
+      </div>
+
+      <!-- MEMBERS -->
+      <div class="mt-4">
+        <h5 class="members-label">
+          <i class="bi bi-people-fill icon-members me-1"></i> Members
+        </h5>
+        <div class="row g-3 mt-2">
+          <ng-container *ngIf="item.members.length > 0; else noMembers">
+            <div class="col-6 col-md-3 col-lg-2" *ngFor="let m of item.members">
+              <div class="member-card text-center p-3 shadow-sm">
+                <img
+                  [src]="m.imageUrl && m.imageUrl.toLowerCase() !== 'defaultimage.jpg' ? 'https://localhost:7093/Images/'+m.imageUrl : 'https://localhost:7093/DefaultImage/DefaultImage.jpg'"
+                  class="member-img mb-2" />
+                <h6 class="fw-bold m-0 member-name">
+                  <i class="bi bi-person-bounding-box icon-name me-1"></i> {{m.name | uppercase}}
+                </h6>
+                <p class="small m-0 text-muted member-age">
+                  <i class="bi bi-hourglass-split icon-age me-1"></i> Age: {{m.age}}
+                </p>
+                <span class="relation-pill">
+                  <i class="bi bi-people-fill icon-relation me-1"></i> {{m.relation}}
+                </span>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-template #noMembers>
+            <div class="col-12 text-center text-muted py-3">
+              <i class="bi bi-exclamation-circle icon-secondary me-2"></i> No Members Added
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #nodata>
+    <p class="text-center">No Data Found</p>
+  </ng-template>
+</div>

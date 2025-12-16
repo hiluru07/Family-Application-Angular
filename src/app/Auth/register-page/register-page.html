@@ -1,0 +1,91 @@
+<div class="d-flex justify-content-center align-items-center min-vh-100" style="background:#f4f8ff;">
+  <div class="card shadow-lg p-4" style="width: 100%; max-width: 420px; border-radius: 12px;">
+
+    <h3 class="text-center fw-bold mb-3 text-primary">Register</h3>
+
+    <form [formGroup]="RegisterForm" (ngSubmit)="submit()">
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Username</label>
+        <input type="text" class="form-control" placeholder="Enter username" formControlName="Username">
+        @if ((Username?.touched || Username?.dirty) && Username?.errors?.['required']) {
+        <p class="text-danger">Username is required</p>
+        }
+        @if (Username?.errors?.['minlength']) {
+        <p class="text-danger">Enter Atleast 4 letter</p>
+        }
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-semibold">First Name</label>
+          <input type="text" class="form-control" placeholder="Enter first name" formControlName="Fname">
+          @if ((Fname?.touched || Fname?.dirty) && Fname?.errors?.['required']) {
+          <p class="text-danger">First Name is required</p>
+          }
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-semibold">Last Name</label>
+          <input type="text" class="form-control" placeholder="Enter last name" formControlName="Lname">
+          @if ((Lname?.touched || Lname?.dirty) && Lname?.errors?.['required']) {
+          <p class="text-danger">Last Name is required</p>
+          }
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Mobile</label>
+        <input type="tel" class="form-control" placeholder="Enter mobile number" maxlength="10" formControlName="Phone">
+        @if ((Phone?.touched || Phone?.dirty) && Phone?.errors?.['required']) {
+        <p class="text-danger">Phone number is required</p>
+        }
+        @if (Phone?.errors?.['pattern']) {
+        <p class="text-danger">Please enter valid ten digit mobile number</p>
+        }
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Email</label>
+        <input type="email" class="form-control" placeholder="example@gmail.com" formControlName="Email">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Password</label>
+        <input type="password" class="form-control" placeholder="Enter password" formControlName="Password">
+        @if ((Password?.touched || Password?.dirty) && Password?.errors?.['required']) {
+        <p class="text-danger">Please Enter password</p>
+        }
+        @if (Password?.errors?.['pattern']) {
+        <p class="text-danger">Please enter one uppercare,special char and number</p>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Confirm Password</label>
+        <input type="password" class="form-control" placeholder="Confirm password" formControlName="Cpassword">
+        @if ((Cpassword?.touched || Cpassword?.dirty) && RegisterForm.errors?.['PasswordMissMatch']) {
+        <p class="text-danger">password does not match</p>
+        }
+      </div>
+      <div class="text-center mt-3 mb-3">
+        <img [src]="preview" class="rounded-circle shadow-sm" width="120" height="120"
+          style="object-fit: cover; border: 2px solid #ddd;">
+      </div>
+
+      <div>
+        <input type="file" #fileInput (change)="onFileSeleted($event)" accept="image/*" hidden
+          formControlName="ProfileImage">
+        <button type="button" class="btn btn-sm btn-outline-primary mt-2 mb-2" (click)="fileInput.click()">Upload
+          Profile
+          Photo</button>
+        @if (ProfileImage?.touched && ProfileImage?.errors?.['required']) {
+        <p class="text-danger">Profile image is required</p>
+        }
+        <button class="btn btn-primary w-100 fw-semibold py-2">Register</button>
+      </div>
+    </form>
+    <p class="text-center mt-3">
+      Already have an account? <a routerLink="/login" class="text-primary fw-semibold">Login</a>
+    </p>
+  </div>
+</div>

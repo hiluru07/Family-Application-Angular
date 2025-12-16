@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
+    <div class="card shadow p-4 text-center" style="max-width:420px; width:100%; border-radius:12px;">
+        <h4 class="fw-bold text-primary mb-3">Account Status</h4>
+        <ng-container *ngIf="status !== 'Rejected'; else nodata">
+            <div class="alert alert-info fw-semibold mb-3">
+                {{username}} Your Status: <b>{{status}}</b>
+            </div>
+            <p class="fw-semibold text-secondary">
+                ✅ Your account is under review<br>
+                ⏳ Please wait for admin approval
+            </p>
+            <hr>
+            <p class="small text-muted mb-0">
+                You will get access automatically once approved
+            </p>
+        </ng-container>
+    </div>
+    <ng-template #nodata>
+        <div class="alert alert-info fw-semibold mb-3">
+            {{username}} Your Status: <b>{{status}}</b>
+        </div>
+        <p class="fw-semibold text-secondary">
+            ✅ Your account is Rejected By Admin<br>
+            ⏳ Please contact Admin !Thank You
+        </p>
+        <hr>
+    </ng-template>
+</div>

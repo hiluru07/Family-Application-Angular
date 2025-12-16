@@ -1,0 +1,148 @@
+<div class="container py-4">
+
+  <!-- HEADER -->
+  <div class="ui-header shadow-lg p-4 mb-4 d-flex justify-content-between align-items-center flex-wrap">
+    <h2 class="fw-bold m-0 text-white">
+      <i class="bi bi-speedometer2 me-2"></i> Admin Dashboard
+    </h2>
+
+    <!-- NAVIGATION BUTTONS -->
+    <div class="mt-3 mt-md-0">
+      <a routerLink="/users-status" class="btn btn-light header-btn me-2">
+        <i class="bi bi-check-circle text-success me-1"></i> User Status
+      </a>
+      <a routerLink="/users" class="btn btn-warning header-btn me-2">
+        <i class="bi bi-people-fill text-dark me-1"></i> Family Heads
+      </a>
+      <a routerLink="/info" class="btn btn-info header-btn">
+        <i class="bi bi-person-badge-fill text-white me-1"></i> Admin Info
+      </a>
+    </div>
+  </div>
+
+  <!-- SEARCH BOX -->
+  <div class="search-wrapper p-3 rounded shadow-sm mb-4 d-flex align-items-center">
+    <i class="bi bi-search icon-blue fs-4 me-2"></i>
+    <input type="text" class="form-control border-0 shadow-none" placeholder="Search by name, phone, email, relation..."
+      (input)="searchData($event.target.value)">
+  </div>
+  <div *ngIf="array.length>0; else nodata">
+    <!-- FAMILY LIST -->
+    <div *ngFor="let item of array" class="family-card card border-0 shadow-sm mb-4 p-0 rounded">
+
+      <!-- FAMILY HEAD SECTION -->
+      <div class="d-flex align-items-center p-3 bg-light rounded-top shadow-sm family-head-card">
+        <img [src]="item.profileImage 
+            ? 'https://localhost:7093/Images/' + item.profileImage 
+            : 'assets/defaultImage.jpg'" class="family-head-img me-3">
+
+        <div class="flex-grow-1">
+          <h5 class="fw-bold mb-1">{{ item.familyHeadFName }} {{ item.familyHeadLName }}</h5>
+          <div class="contact-info text-muted">
+            <i class="bi bi-phone icon-green me-1"></i> {{ item.phone }} &nbsp; | &nbsp;
+            <i class="bi bi-envelope icon-red me-1"></i> {{ item.email }}
+          </div>
+        </div>
+
+        <div class="text-end ms-3 role-add-box p-2 rounded shadow-sm">
+          <div class="mb-2 role-box text-dark">
+            <i class="bi bi-award-fill icon-gold me-1"></i> {{ item.role }}
+          </div>
+
+          <a [routerLink]="['/Addmember', item.id]" class="btn btn-success btn-sm w-100 add-btn">
+            <i class="bi bi-person-plus-fill me-1"></i> Add Member
+          </a>
+        </div>
+      </div>
+
+      <!-- MEMBERS TABLE -->
+      <div *ngIf="item.members?.length > 0" class="table-responsive mt-0">
+        <table class="table table-hover table-striped align-middle text-center mb-0 rounded-bottom shadow-sm">
+
+          <thead class="table-dark">
+            <tr>
+              <th><i class="bi bi-image icon-blue"></i> Image</th>
+              <th><i class="bi bi-person icon-purple"></i> Name</th>
+              <th><i class="bi bi-123 icon-orange"></i> Age</th>
+              <th><i class="bi bi-gender-ambiguous icon-pink"></i> Gender</th>
+              <th><i class="bi bi-people icon-green"></i> Relation</th>
+              <th><i class="bi bi-gear icon-red"></i> Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let m of item.members">
+              <td>
+                <img [src]="(!m.imageUrl || m.imageUrl.toLowerCase() === 'defaultimage.jpg')
+                ? 'https://localhost:7093/DefaultImage/DefaultImage.jpg'
+                : 'https://localhost:7093/Images/' + m.imageUrl" class="member-img">
+              </td>
+              <td class="fw-semibold">{{ m.name }}</td>
+              <td>{{ m.age }}</td>
+              <td><span class="badge bg-info">{{ m.gender }}</span></td>
+              <td><span class="badge bg-primary">{{ m.relation }}</span></td>
+              <td>
+                <button class="btn btn-outline-primary btn-sm me-2" (click)="GetEditMember(m)">
+                  <i class="bi bi-pencil icon-blue"></i>
+                </button>
+                <button class="btn btn-outline-danger btn-sm" (click)="DeleteMember(m.id)">
+                  <i class="bi bi-trash icon-red"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="!item.members || item.members.length === 0" class="text-center py-3 text-muted empty-members">
+        <i class="bi bi-exclamation-circle icon-orange"></i> No members added
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT MODAL -->
+<div class="modal fade" #EditMemberModal tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title">Edit Member</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="EditForm" (ngSubmit)="submitForm()">
+          <div class="text-center mb-3">
+            <img [src]="preview" class="rounded-circle border" width="130" height="130" style="object-fit: cover;">
+          </div>
+          <div class="d-flex justify-content-center gap-2 mb-2">
+            <button type="button" class="btn btn-secondary btn-sm" (click)="fileInput.click()">Select Image</button>
+            <button type="button" class="btn btn-danger btn-sm" (click)="removeMemberImage()">Remove</button>
+          </div>
+          <input type="file" #fileInput (change)="onSelectedFile($event)" accept="image/*" hidden>
+          <label class="fw-bold mt-2">Name:</label>
+          <input type="text" class="form-control" formControlName="name">
+          <div *ngIf="name?.touched && name?.invalid" class="text-danger small">Name is required</div>
+          <label class="fw-bold mt-2">Age:</label>
+          <input type="number" class="form-control" formControlName="age">
+          <div *ngIf="age?.touched && age?.invalid" class="text-danger small">Age is required</div>
+          <label class="fw-bold mt-2">Gender:</label>
+          <select class="form-control" formControlName="gender">
+            <option value="">-- Select Gender --</option>
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+          <div *ngIf="gender?.touched && gender?.invalid" class="text-danger small">Gender is required</div>
+          <label class="fw-bold mt-2">Relation:</label>
+          <select class="form-control" formControlName="relation">
+            <option value="">-- Select Relation --</option>
+            <option *ngFor="let r of Relations">{{ r }}</option>
+          </select>
+          <div *ngIf="relation?.touched && relation?.invalid" class="text-danger small">Relation is required</div>
+          <button class="btn btn-success w-100 mt-3" [disabled]="EditForm.invalid">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <ng-template #nodata>
+    <p class="text-center">No Data Found</p>
+  </ng-template>
+</div>

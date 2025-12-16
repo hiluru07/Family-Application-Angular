@@ -1,0 +1,46 @@
+<div class="container py-4">
+
+  <h3 class="fw-bold mb-4">
+    <i class="bi bi-people-fill text-primary"></i> Approval Requests
+  </h3>
+  <a routerLink="/admin-dashboard" class="btn btn-primary"><i class="bi bi-arrow-left-circle me-1"></i>Back</a>
+  <div *ngIf="array && array.length > 0; else nodata">
+
+    <div class="user-card shadow-lg" *ngFor="let i of array; let index = index">
+
+      <!-- Profile -->
+      <img [src]="'https://localhost:7093/Images/' + i.profileImage" class="profile-img" />
+
+      <!-- Info -->
+      <div class="info-box">
+        <h5 class="fw-bold text-dark m-0">{{ i.username }}</h5>
+
+        <p class="m-0 mt-1 text-muted">
+          <i class="bi bi-telephone-fill text-primary"></i>
+          {{ i.phone }}
+        </p>
+
+        <span class="status-badge" [ngClass]="{
+                'pending': i.status === 'Pending',
+                'approved': i.status === 'Approved',
+                'rejected': i.status === 'Rejected'
+              }">
+          {{ i.status }}
+        </span>
+      </div>
+
+      <!-- Actions -->
+      <div class="action-box">
+        <button class="btn btn-success action-btn" (click)="Approved(i.id)">
+          <i class="bi bi-check-lg"></i>
+        </button>
+        <button class="btn btn-danger action-btn" (click)="Rejected(i.id)">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <ng-template #nodata>
+    <p class="text-center text-muted mt-4 fs-5">No Approval Requests Found</p>
+  </ng-template>
+</div>

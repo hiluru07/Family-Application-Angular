@@ -1,0 +1,98 @@
+<div class="container py-4 d-flex justify-content-center">
+
+  <div class="w-100" style="max-width: 420px;">
+
+    <!-- Top Buttons -->
+    <div class="d-flex justify-content-start gap-2 mb-3">
+      <a routerLink="/admin-dashboard" class="btn btn-warning btn-sm px-3">
+        <i class="bi bi-arrow-left"></i> Back
+      </a>
+
+      <button type="button" class="btn btn-info btn-sm px-3" (click)="AddFields()">
+        <i class="bi bi-plus-circle"></i> Add More Members
+      </button>
+    </div>
+
+    <form [formGroup]="AddMembersForm" (ngSubmit)="submit()">
+
+      <div formArrayName="items">
+
+        <div *ngFor="let item of items.controls; let i = index" [formGroupName]="i"
+          class="card p-3 mb-3 border-0 rounded-4 shadow" style="background:#f8f9fa;">
+
+          <!-- PROFILE IMAGE FULL COVER -->
+          <div class="text-center mb-2">
+            <div class="rounded-circle border overflow-hidden mx-auto" style="width:90px; height:90px;">
+              <img [src]="previews[i] || 'assets/defaultImage.jpg'" class="w-100 h-100 object-fit-cover">
+            </div>
+          </div>
+
+          <!-- UPLOAD -->
+          <div class="text-center mb-2">
+            <input type="file" hidden accept="image/*" #fileInput (change)="onSelectedFile($event, i)">
+            <button type="button" class="btn btn-primary btn-sm rounded-pill px-3" (click)="fileInput.click()">
+              <i class="bi bi-upload"></i> Upload
+            </button>
+          </div>
+
+          <!-- NAME -->
+          <div class="mb-1">
+            <label class="form-label fw-semibold small">Name</label>
+            <input class="form-control form-control-sm rounded-3" formControlName="name">
+            <small class="text-danger" *ngIf="item.get('name')?.invalid && item.get('name')?.touched">
+              Name required
+            </small>
+          </div>
+
+          <!-- AGE -->
+          <div class="mb-1">
+            <label class="form-label fw-semibold small">Age</label>
+            <input type="number" class="form-control form-control-sm rounded-3" formControlName="age">
+            <small class="text-danger" *ngIf="item.get('age')?.invalid && item.get('age')?.touched">
+              Age required
+            </small>
+          </div>
+
+          <!-- GENDER -->
+          <div class="mb-1">
+            <label class="form-label fw-semibold small">Gender</label>
+            <select class="form-select form-select-sm rounded-3" formControlName="gender">
+              <option value="">-- Select --</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+            <small class="text-danger" *ngIf="item.get('gender')?.invalid && item.get('gender')?.touched">
+              Select gender
+            </small>
+          </div>
+
+          <!-- RELATION -->
+          <div class="mb-1">
+            <label class="form-label fw-semibold small">Relation</label>
+            <select class="form-select form-select-sm rounded-3" formControlName="relation">
+              <option value="">-- Select --</option>
+              <option *ngFor="let r of Relations" [value]="r">{{ r }}</option>
+            </select>
+            <small class="text-danger" *ngIf="item.get('relation')?.invalid && item.get('relation')?.touched">
+              Select relation
+            </small>
+          </div>
+
+          <!-- REMOVE BUTTON -->
+          <button *ngIf="items.length > 1" type="button" class="btn btn-danger btn-sm w-100 mt-1 rounded-3"
+            (click)="removeFields(i)">
+            <i class="bi bi-trash"></i> Remove
+          </button>
+
+        </div>
+      </div>
+
+      <!-- SUBMIT -->
+      <button type="submit" class="btn btn-success w-100 mt-2 rounded-3">
+        <i class="bi bi-check-circle"></i> Submit
+      </button>
+
+    </form>
+
+  </div>
+</div>
