@@ -1,29 +1,30 @@
 <!-- NAVBAR.HTML -->
-<nav class="navbar py-3 navbar-alt">
+<nav class="navbar py-3" style="background:linear-gradient(90deg,#001f54,#0099ff);">
   <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-start w-100">
 
     <!-- Top row: Brand left, Members right -->
     <div class="d-flex justify-content-between align-items-center w-100 top-row">
-      <a class="navbar-brand brand-alt" href="#">Vavanna Family</a>
+      <a class="navbar-brand text-white fw-bold fs-4 m-0 brand-size">Vavanna Family</a>
+      
+      <!-- Members link always aligned right -->
+      <a class="nav-link nav-underline text-white m-0 members-link d-sm-none" routerLink="/member">Members</a>
 
-      <!-- Mobile Members -->
-      <a class="nav-link nav-underline members-link d-sm-none" routerLink="/member">Members</a>
-
-      <!-- Desktop: Members + 3 routes -->
-      <div class="d-none d-sm-flex gap-3 ms-3 desktop-links align-items-center">
-        <a class="nav-link nav-underline members-link" routerLink="/member">Members</a>
-        <a class="btn btn-alt" routerLink="/admin">Admin</a>
-        <a class="btn btn-outline-alt" routerLink="/login">Login</a>
-        <a class="btn btn-outline-alt" routerLink="/register">Register</a>
+      <!-- Desktop: Members + 3 routes same row -->
+      <div class="d-none d-sm-flex gap-2 ms-3 desktop-links align-items-center">
+        <a class="nav-link nav-underline text-white m-0 members-link" routerLink="/member">Members</a>
+        <a class="btn btn-light nav-btn" routerLink="/admin">Admin</a>
+        <a class="btn btn-outline-light nav-btn" routerLink="/login">Login</a>
+        <a class="btn btn-outline-light nav-btn" routerLink="/register">Register</a>
       </div>
     </div>
 
-    <!-- Mobile: 3 routes below -->
+    <!-- Mobile: show 3 routes below -->
     <div class="d-flex gap-2 mt-2 w-100 bottom-links d-sm-none">
-      <a class="btn btn-alt flex-fill" routerLink="/admin">Admin</a>
-      <a class="btn btn-outline-alt flex-fill" routerLink="/login">Login</a>
-      <a class="btn btn-outline-alt flex-fill" routerLink="/register">Register</a>
+      <a class="btn btn-light flex-fill nav-btn text-center" routerLink="/admin">Admin</a>
+      <a class="btn btn-outline-light flex-fill nav-btn text-center" routerLink="/login">Login</a>
+      <a class="btn btn-outline-light flex-fill nav-btn text-center" routerLink="/register">Register</a>
     </div>
 
   </div>
 </nav>
+<!---->
