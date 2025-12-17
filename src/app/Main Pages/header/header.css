@@ -1,29 +1,39 @@
-/* Glass navbar */
-.navbar-glass {
-  background: rgba(0, 31, 84, 0.85);
-  backdrop-filter: blur(10px);
+/* ================= MODERN NAVBAR ================= */
+.navbar-modern {
+  background: #0d1b2a; /* dark navy */
   border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  padding: 10px 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }
 
-/* Members underline with smooth slide */
+/* Brand */
+.brand-modern {
+  font-size: 22px;
+  font-weight: 700;
+  color: #f8f9fa;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+/* Members underline effect */
 .nav-underline {
   position: relative;
-  color: white !important;
+  color: #f8f9fa;
   font-weight: 600;
   padding-bottom: 4px;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .nav-underline::after {
   content: "";
   position: absolute;
   width: 0%;
-  height: 2px;
-  background: #00c6ff;
+  height: 3px;
+  background: #00f0ff;
   left: 0;
   bottom: 0;
   transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 2px;
 }
 
 .nav-underline:hover::after,
@@ -31,60 +41,51 @@
   width: 100%;
 }
 
-/* Buttons glow effect */
-.btn-glow {
-  background: linear-gradient(90deg, #00c6ff, #0072ff);
-  color: white !important;
+/* Modern buttons */
+.btn-modern {
+  background: linear-gradient(135deg, #00f0ff, #0072ff);
+  color: #fff;
   border: none;
   border-radius: 50px;
   padding: 10px 20px;
-  box-shadow: 0 4px 12px rgba(0,198,255,0.5);
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
 }
 
-.btn-glow:hover {
+.btn-modern:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0,198,255,0.7);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
 }
 
-.btn-outline-glow {
+/* Outline buttons */
+.btn-outline-modern {
   background: transparent;
-  color: white !important;
-  border: 2px solid #00c6ff;
+  color: #00f0ff;
+  border: 2px solid #00f0ff;
   border-radius: 50px;
   padding: 10px 20px;
-  box-shadow: 0 2px 8px rgba(0,198,255,0.3);
-  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.3s ease;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
-.btn-outline-glow:hover {
-  background: #00c6ff;
-  color: #001f54 !important;
+.btn-outline-modern:hover {
+  background: #00f0ff;
+  color: #0d1b2a;
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0,198,255,0.7);
+  box-shadow: 0 8px 20px rgba(0,240,255,0.35);
 }
 
-/* Brand and Members text */
-.brand-size {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.members-link {
-  font-size: 16px;
-}
-
-/* Bottom links full width on mobile */
+/* Bottom links mobile full width */
 .bottom-links a {
   flex: 1;
-  border-radius: 50px;
   text-align: center;
 }
 
 /* Responsive adjustments */
 @media (max-width: 576px) {
-  .brand-size {
-    font-size: 18px;
+  .brand-modern {
+    font-size: 20px;
   }
 
   .members-link {
