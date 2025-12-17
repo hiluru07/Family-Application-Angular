@@ -93,7 +93,7 @@
   padding: 8px;
 }
 
-/* ================= FAMILY HEAD ROW ================= */
+/* ================= FAMILY HEAD TABLE ROW SHADOW ================= */
 .family-head-row {
   background-color: #fff;
   border-radius: 10px;
@@ -112,10 +112,9 @@
 }
 
 /* ================= RESPONSIVE FIXES ================= */
-
-/* Mobile < 600px */
 @media (max-width: 600px) {
 
+  /* Family head & profile card responsive */
   .family-head-row {
     flex-direction: column;
     text-align: center;
@@ -125,6 +124,7 @@
   .family-head-img {
     width: 65px;
     height: 65px;
+    margin: 0 auto;
   }
 
   .role-add-box {
@@ -150,9 +150,22 @@
     font-size: 0.75rem;
     padding: 5px 12px;
   }
+
+  .contact-info {
+    text-align: center;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .family-header,
+  .header-section {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
 }
 
-/* Tablet 600 – 992px */
+/* Tablet */
 @media (min-width: 600px) and (max-width: 992px) {
 
   .family-head-row {
@@ -171,7 +184,7 @@
   }
 }
 
-/* Large screens > 1200px */
+/* Large screens */
 @media (min-width: 1200px) {
   .family-card {
     margin-bottom: 18px;
