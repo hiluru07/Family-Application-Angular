@@ -1,10 +1,10 @@
 <div class="container py-4" style="background: linear-gradient(135deg, #f5f7fa, #e6ecf5); border-radius: 16px;">
   <!-- Header -->
-  <div class="d-flex justify-content-between align-items-center mb-4">
+  <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
     <h3 class="fw-bold text-dark m-0">
       <i class="bi bi-people-fill text-primary me-2"></i> Family Heads
     </h3>
-    <a routerLink="/admin-dashboard" class="btn btn-outline-primary btn-sm px-3">
+    <a routerLink="/admin-dashboard" class="btn btn-outline-primary btn-sm px-3 mt-2 mt-md-0">
       <i class="bi bi-arrow-left-circle me-1"></i> Back
     </a>
   </div>
@@ -13,68 +13,72 @@
   <div class="card border-0 shadow rounded-4" style="background:#ffffffee;">
     <div class="card-body p-0">
 
-      <table class="table table-hover align-middle mb-0">
+      <!-- Responsive Table Wrapper -->
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
 
-        <!-- Table Head -->
-        <thead style="background:#0d47a1;" class="text-white">
-          <tr>
-            <th class="ps-4 py-3"><i class="bi bi-person-circle me-1"></i> Profile</th>
-            <th class="py-3"><i class="bi bi-person-badge me-1"></i> Username</th>
-            <th class="py-3"><i class="bi bi-person-fill-check me-1"></i> Full Name</th>
-            <th class="py-3"><i class="bi bi-shield-check me-1"></i> Role</th>
-            <th class="text-end pe-4 py-3"><i class="bi bi-gear me-1"></i> Action</th>
-          </tr>
-        </thead>
+          <!-- Table Head -->
+          <thead style="background:#0d47a1;" class="text-white">
+            <tr>
+              <th class="ps-4 py-3"><i class="bi bi-person-circle me-1"></i> Profile</th>
+              <th class="py-3"><i class="bi bi-person-badge me-1"></i> Username</th>
+              <th class="py-3"><i class="bi bi-person-fill-check me-1"></i> Full Name</th>
+              <th class="py-3"><i class="bi bi-shield-check me-1"></i> Role</th>
+              <th class="text-end pe-4 py-3"><i class="bi bi-gear me-1"></i> Action</th>
+            </tr>
+          </thead>
 
-        <!-- Table Body -->
-        <tbody *ngIf="array.length>0; else nodata">
+          <!-- Table Body -->
+          <tbody *ngIf="array.length>0; else nodata">
+            <tr *ngFor="let item of array" style="border-bottom: 1px solid #eaeaea;">
+              <!-- Profile -->
+              <td class="ps-4 py-3">
+                <img [src]="imageBaseUrl + '/Images/' + item.profileImage"
+                     class="rounded-circle shadow-sm border"
+                     style="width: 55px; height: 55px; object-fit: cover;">
+              </td>
 
-          <tr *ngFor="let item of array" style="border-bottom: 1px solid #eaeaea;">
+              <!-- Username -->
+              <td class="fw-semibold text-primary small">
+                <span class="px-3 py-1 rounded-pill bg-light border shadow-sm">
+                  <i class="bi bi-at me-1 text-secondary"></i>
+                  {{ item.username }}
+                </span>
+              </td>
 
-            <!-- Profile -->
-            <td class="ps-4 py-3">
-              <img [src]=" imageBaseUrl + '/Images/' + item.profileImage" class="rounded-circle shadow-sm border"
-                style="width: 55px; height: 55px; object-fit: cover;">
-            </td>
+              <!-- Full Name -->
+              <td class="fw-semibold">
+                <i class="bi bi-person-fill text-secondary me-1"></i>
+                {{ item.fname }} {{ item.lname }}
+              </td>
 
-            <!-- Username -->
-            <td class="fw-semibold text-primary small">
-              <span class="px-3 py-1 rounded-pill bg-light border shadow-sm">
-                <i class="bi bi-at me-1 text-secondary"></i>
-                {{ item.username }}
-              </span>
-            </td>
+              <!-- Role -->
+              <td>
+                <span class="badge px-3 py-2 bg-info text-dark rounded-pill shadow-sm">
+                  <i class="bi bi-award-fill me-1"></i>
+                  {{ item.role }}
+                </span>
+              </td>
 
-            <!-- Full Name -->
-            <td class="fw-semibold">
-              <i class="bi bi-person-fill text-secondary me-1"></i>
-              {{ item.fname }} {{ item.lname }}
-            </td>
+              <!-- Delete -->
+              <td class="text-end pe-4">
+                <button class="btn btn-sm btn-outline-danger px-3 rounded-pill" (click)="DeleteHead(item.id)">
+                  <i class="bi bi-trash me-1"></i> Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
 
-            <!-- Role -->
-            <td>
-              <span class="badge px-3 py-2 bg-info text-dark rounded-pill shadow-sm">
-                <i class="bi bi-award-fill me-1"></i>
-                {{ item.role }}
-              </span>
-            </td>
+          <ng-template #nodata>
+            <tr>
+              <td colspan="5" class="text-center py-4">
+                No Family Head Data Found
+              </td>
+            </tr>
+          </ng-template>
+        </table>
+      </div> <!-- /.table-responsive -->
 
-            <!-- Delete -->
-            <td class="text-end pe-4">
-              <button class="btn btn-sm btn-outline-danger px-3 rounded-pill" (click)="DeleteHead(item.id)">
-                <i class="bi bi-trash me-1"></i> Delete
-              </button>
-            </td>
-          </tr>
-        </tbody>
-        <ng-template #nodata>
-          <tr>
-            <td colspan="5" class="text-center py-4">
-              No Family Head Data Found
-            </td>
-          </tr>
-        </ng-template>
-      </table>
     </div>
   </div>
 </div>
