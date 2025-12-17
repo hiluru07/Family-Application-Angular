@@ -25,7 +25,6 @@
   padding: 10px 0;
   font-weight: 600;
   border-radius: 50px;
-  text-align: center;
   white-space: nowrap;
   transition: transform 0.2s ease;
 }
@@ -44,25 +43,18 @@
 }
 
 .bottom-links a {
-  flex: 1 1 0; /* Each button takes equal width */
-  text-align: center;
+  flex: 1; /* each button takes equal width */
 }
 
 @media (max-width: 576px) {
   .brand-size {
     font-size: 18px;
   }
-
   .members-link {
     font-size: 16px;
   }
-
-  .bottom-links {
-    flex-direction: column;
-    gap: 8px;
-  }
-
   .bottom-links a {
-    width: 100%; /* full width on mobile */
+    font-size: 14px;
+    padding: 8px 0;
   }
 }
