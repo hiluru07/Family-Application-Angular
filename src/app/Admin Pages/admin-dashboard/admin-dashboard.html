@@ -39,7 +39,7 @@
         <div class="flex-grow-1">
           <h5 class="fw-bold mb-1">{{ item.familyHeadFName }} {{ item.familyHeadLName }}</h5>
           <div class="contact-info text-muted">
-            <i class="bi bi-phone icon-green me-1"></i> {{ item.phone }} <br> &nbsp; | &nbsp;
+            <i class="bi bi-phone icon-green me-1"></i> {{ item.phone }} <br> 
             <i class="bi bi-envelope icon-red me-1"></i> {{ item.email }}
           </div>
         </div>
@@ -54,7 +54,9 @@
           </a>
         </div>
       </div>
-
+       <h5 class="members-label">
+          <i class="bi bi-people-fill icon-members me-1"></i> Members
+        </h5>
       <!-- MEMBERS TABLE -->
       <div *ngIf="item.members?.length > 0" class="table-responsive mt-0">
         <table class="table table-hover table-striped align-middle text-center mb-0 rounded-bottom shadow-sm">
