@@ -68,27 +68,25 @@
 }
 
 
-/* Mobile bottom links different bg */
 @media (max-width: 576px) {
+
+  /* Remove blue area feel */
   .bottom-links {
-    background: #004b7a; /* dark teal */
-    padding: 10px;
-    border-radius: 8px;
+    background: #ffffff;       /* full white bg */
+    padding: 12px;
+    border-radius: 10px;
   }
 
   .bottom-links a {
-    background: white !important;  /* button bg */
-    color: #004b7a !important;     /* text color */
-    border-radius: 6px;
+    background: #f8f9fa !important; /* light grey buttons */
+    color: #001f54 !important;      /* navy text */
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
     font-weight: 600;
   }
 
-  .bottom-links a:nth-child(2) {
-    background: #f1f1f1 !important;
-  }
-
-  .bottom-links a:nth-child(3) {
-    background: #e3e3e3 !important;
+  .bottom-links a:hover {
+    background: #e9ecef !important; /* subtle hover */
   }
 }
 
