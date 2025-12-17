@@ -66,16 +66,13 @@
     padding: 8px 0;
   }
 }
-/* Shaking animation for Members */
-@keyframes shake {
-  0% { transform: translateX(0); }
-  20% { transform: translateX(-3px); }
-  40% { transform: translateX(3px); }
-  60% { transform: translateX(-3px); }
-  80% { transform: translateX(3px); }
-  100% { transform: translateX(0); }
+/* Glow animation for Members */
+@keyframes glow {
+  0% { text-shadow: 0 0 5px #fff; }
+  50% { text-shadow: 0 0 20px #00f0ff; }
+  100% { text-shadow: 0 0 5px #fff; }
 }
 
 .members-link:hover {
-  animation: shake 0.5s ease-in-out;
+  animation: glow 1s infinite alternate;
 }
