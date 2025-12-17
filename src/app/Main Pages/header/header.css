@@ -31,27 +31,14 @@
   border-radius: 50px;
 }
 
-/* Mobile responsiveness */
+/* Brand responsive size */
 @media (max-width: 576px) {
   .brand-size {
     font-size: 18px !important;
   }
-
-  .nav-gap {
-    gap: 8px !important;
-  }
-
-  .nav-btn {
-    padding: 6px 12px;
-    font-size: 14px;
-  }
-
-  .nav-underline {
-    font-size: 14px;
-  }
 }
 
-/* Keep nav items in a row and scrollable if needed */
+/* Optional: horizontal scroll for extra long nav on very small screens */
 .navbar .d-flex {
   flex-wrap: nowrap;
   overflow-x: auto;
@@ -59,4 +46,14 @@
 
 .navbar .d-flex::-webkit-scrollbar {
   display: none;
+}
+
+/* Hamburger icon custom color */
+.navbar-toggler {
+  color: white;
+  border: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/ %3E%3C/svg%3E");
 }
