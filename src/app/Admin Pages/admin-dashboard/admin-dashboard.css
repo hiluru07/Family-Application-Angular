@@ -51,7 +51,7 @@
   border-radius: 12px;
   overflow: hidden;
   border-left: 5px solid #7F00FF;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin-bottom: 15px;
 }
@@ -81,7 +81,7 @@
   box-shadow: 0px 3px 8px rgba(0,0,0,0.2);
 }
 
-/* ================= FAMILY HEAD LAYOUT ================= */
+/* ================= FAMILY HEAD ROW ================= */
 .family-head-card {
   display: flex;
   align-items: center;
@@ -92,43 +92,55 @@
 
 /* Mobile < 600px */
 @media (max-width: 600px) {
-
   .family-head-card {
     flex-direction: column !important;
     text-align: center;
+    justify-content: center;
     padding: 15px !important;
     gap: 10px;
   }
 
   .family-head-img {
-    width: 70px;
-    height: 70px;
-  }
-
-  .contact-info {
-    width: 100%;
-  }
-
-  .contact-info div {
-    display: block;
-    margin: 4px 0;
+    width: 65px;
+    height: 65px;
   }
 
   .role-add-box {
-    width: 100% !important;
+    width: 100%;
+    text-align: center;
   }
 
   .add-btn {
-    width: 100% !important;
-    padding: 8px;
+    font-size: 0.75rem;
+  }
+
+  .member-img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .ui-header {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .header-btn {
+    font-size: 0.75rem;
+    padding: 5px 12px;
   }
 }
 
 /* Tablet 600 – 992px */
 @media (min-width: 600px) and (max-width: 992px) {
+
   .family-head-card {
     flex-direction: row;
     gap: 10px;
+  }
+
+  .member-img {
+    width: 60px;
+    height: 60px;
   }
 
   .family-head-img {
