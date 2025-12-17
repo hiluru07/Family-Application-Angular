@@ -1,3 +1,32 @@
+/* Gradient buttons */
+.btn-gradient {
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  color: white !important;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.btn-outline-gradient {
+  background: transparent;
+  color: white !important;
+  border: 2px solid white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.btn-outline-gradient:hover {
+  background: white;
+  color: #0072ff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
 /* Members underline effect */
 .nav-underline {
   position: relative;
@@ -25,15 +54,11 @@
 
 /* Buttons styling */
 .nav-btn {
-  padding: 8px 16px;
+  padding: 8px 20px;
   font-weight: 600;
   border-radius: 50px;
   white-space: nowrap;
-  transition: transform 0.2s ease;
-}
-
-.nav-btn:hover {
-  transform: scale(1.05);
+  text-align: center;
 }
 
 /* Brand and Members */
@@ -63,6 +88,6 @@
 
   .bottom-links a {
     font-size: 14px;
-    padding: 8px 0;
+    padding: 10px 0;
   }
 }
