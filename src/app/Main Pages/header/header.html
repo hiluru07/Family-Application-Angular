@@ -1,19 +1,19 @@
 <!-- NAVBAR.HTML -->
 <nav class="navbar py-3" style="background:linear-gradient(90deg,#001f54,#0099ff);">
-  <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-start">
+  <div class="container d-flex flex-column">
 
-    <!-- Top row: Brand and Members -->
-    <div class="d-flex justify-content-between w-100 align-items-center">
+    <!-- Top row: Brand left, Members right -->
+    <div class="d-flex justify-content-between align-items-center w-100">
       <a class="navbar-brand text-white fw-bold fs-4 m-0 brand-size">Vavanna Family</a>
       <a class="nav-link nav-underline text-white m-0 members-link" routerLink="/member">Members</a>
     </div>
 
-    <!-- Bottom row: other routes -->
-    <ul class="navbar-nav d-flex flex-row gap-2 mt-2 other-links">
-      <li><a class="btn btn-light nav-btn" routerLink="/admin">Admin</a></li>
-      <li><a class="btn btn-outline-light nav-btn" routerLink="/login">Login</a></li>
-      <li><a class="btn btn-outline-light nav-btn" routerLink="/register">Register</a></li>
-    </ul>
+    <!-- Bottom row: 3 full-width routes -->
+    <div class="d-flex gap-2 mt-2 bottom-links flex-wrap">
+      <a class="btn btn-light flex-fill nav-btn" routerLink="/admin">Admin</a>
+      <a class="btn btn-outline-light flex-fill nav-btn" routerLink="/login">Login</a>
+      <a class="btn btn-outline-light flex-fill nav-btn" routerLink="/register">Register</a>
+    </div>
 
   </div>
 </nav>
