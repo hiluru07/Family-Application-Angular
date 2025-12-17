@@ -1,3 +1,4 @@
+/* ================= NAV LINKS ================= */
 .nav-underline {
   position: relative;
   color: white !important;
@@ -22,27 +23,33 @@
 }
 
 .nav-btn {
-  padding: 8px 16px;
+  padding: 6px 18px;
   font-weight: 600;
   border-radius: 50px;
-  white-space: nowrap; /* keeps button text on one line */
+  white-space: nowrap; /* keep text in one line */
+  transition: transform 0.2s ease;
 }
 
-@media (max-width: 576px) {
-  .nav-gap {
-    gap: 8px !important;
-    overflow-x: auto; /* horizontal scroll if needed */
-  }
+.nav-btn:hover {
+  transform: scale(1.05);
+}
 
-  .nav-gap::-webkit-scrollbar {
-    display: none; /* hide scrollbar */
+.nav-links {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.nav-links::-webkit-scrollbar {
+  display: none;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 576px) {
+  .nav-links {
+    gap: 8px !important;
   }
 
   .brand-size {
     font-size: 18px !important;
-  }
-
-  .navbar-nav {
-    flex-wrap: nowrap; /* keep items in single row */
   }
 }
