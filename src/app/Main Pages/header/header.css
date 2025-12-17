@@ -1,7 +1,6 @@
 /* ================= MODERN NAVBAR ================= */
 .navbar-modern {
   background: #0d1b2a; /* dark navy */
-  border-radius: 15px;
   padding: 10px 20px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }
