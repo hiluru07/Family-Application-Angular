@@ -1,33 +1,12 @@
-/* Gradient buttons */
-.btn-gradient {
-  background: linear-gradient(90deg, #00c6ff, #0072ff);
-  color: white !important;
-  border: none;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+/* Glass navbar */
+.navbar-glass {
+  background: rgba(0, 31, 84, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
-.btn-gradient:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-}
-
-.btn-outline-gradient {
-  background: transparent;
-  color: white !important;
-  border: 2px solid white;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
-}
-
-.btn-outline-gradient:hover {
-  background: white;
-  color: #0072ff !important;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-}
-
-/* Members underline effect */
+/* Members underline with smooth slide */
 .nav-underline {
   position: relative;
   color: white !important;
@@ -41,10 +20,10 @@
   position: absolute;
   width: 0%;
   height: 2px;
-  background: #fff;
+  background: #00c6ff;
   left: 0;
   bottom: 0;
-  transition: width 0.3s ease-in-out;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-underline:hover::after,
@@ -52,16 +31,40 @@
   width: 100%;
 }
 
-/* Buttons styling */
-.nav-btn {
-  padding: 8px 20px;
-  font-weight: 600;
+/* Buttons glow effect */
+.btn-glow {
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  color: white !important;
+  border: none;
   border-radius: 50px;
-  white-space: nowrap;
-  text-align: center;
+  padding: 10px 20px;
+  box-shadow: 0 4px 12px rgba(0,198,255,0.5);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-/* Brand and Members */
+.btn-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,198,255,0.7);
+}
+
+.btn-outline-glow {
+  background: transparent;
+  color: white !important;
+  border: 2px solid #00c6ff;
+  border-radius: 50px;
+  padding: 10px 20px;
+  box-shadow: 0 2px 8px rgba(0,198,255,0.3);
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn-outline-glow:hover {
+  background: #00c6ff;
+  color: #001f54 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,198,255,0.7);
+}
+
+/* Brand and Members text */
 .brand-size {
   font-size: 20px;
   font-weight: bold;
@@ -71,9 +74,11 @@
   font-size: 16px;
 }
 
-/* Mobile bottom links */
+/* Bottom links full width on mobile */
 .bottom-links a {
-  flex: 1; /* equal width */
+  flex: 1;
+  border-radius: 50px;
+  text-align: center;
 }
 
 /* Responsive adjustments */
