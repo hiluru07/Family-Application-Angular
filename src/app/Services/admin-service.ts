@@ -27,6 +27,6 @@ export class AdminService {
     return this.http.get<any>(`${this.baseurl}/Admin/adminInfo`)
   }
   UpdateAdmin(id: any, data: FormData): Observable<any> {
-    return this.http.put<any>(`${this.baseurl}/Admin/updateAdmin` + id, data)
+    return this.http.put<any>(`${this.baseurl}/Admin/updateAdmin/`+id,data)
   }
 }
