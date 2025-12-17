@@ -33,7 +33,7 @@
       <!-- FAMILY HEAD SECTION -->
       <div class="d-flex align-items-center p-3 bg-light rounded-top shadow-sm family-head-card">
         <img [src]="item.profileImage 
-            ? 'https://localhost:7093/Images/' + item.profileImage 
+            ? imageBaseUrl + '/Images/' + item.profileImage 
             : 'assets/defaultImage.jpg'" class="family-head-img me-3">
 
         <div class="flex-grow-1">
@@ -74,8 +74,8 @@
             <tr *ngFor="let m of item.members">
               <td>
                 <img [src]="(!m.imageUrl || m.imageUrl.toLowerCase() === 'defaultimage.jpg')
-                ? 'https://localhost:7093/DefaultImage/DefaultImage.jpg'
-                : 'https://localhost:7093/Images/' + m.imageUrl" class="member-img">
+                ? imageBaseUrl + '/DefaultImage/DefaultImage.jpg'
+                : imageBaseUrl + '/Images/' + m.imageUrl" class="member-img">
               </td>
               <td class="fw-semibold">{{ m.name }}</td>
               <td>{{ m.age }}</td>

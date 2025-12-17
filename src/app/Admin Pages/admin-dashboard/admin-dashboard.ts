@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import * as bootstrap from 'bootstrap';
 import { Userview } from '../../Services/userview';
 import { MemberDashboardService } from '../../Services/member-dashboard-service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -24,6 +25,7 @@ export class AdminDashboard implements OnInit {
   isInsideDashboard = true;
   @ViewChild('EditMemberModal') EditMemberModal!: ElementRef;
   modal: any;
+  imageBaseUrl = environment.IMAGE_BASE_URL;
 
   constructor(
     private service: AdminService,
@@ -80,9 +82,9 @@ export class AdminDashboard implements OnInit {
     });
 
     if (data.imageUrl && data.imageUrl.toLowerCase() !== 'defaultimage.jpg') {
-      this.preview = "https://localhost:7093/Images/" + data.imageUrl;
+      this.preview = this.imageBaseUrl +"/Images/" + data.imageUrl;
     } else {
-      this.preview = "https://localhost:7093/DefaultImage/DefaultImage.jpg";
+      this.preview = this.imageBaseUrl + "/DefaultImage/DefaultImage.jpg";
     }
 
     this.selectedFile = null;
@@ -99,7 +101,7 @@ export class AdminDashboard implements OnInit {
   }
 
   removeMemberImage() {
-    this.preview = "https://localhost:7093/DefaultImage/DefaultImage.jpg";
+    this.preview = this.imageBaseUrl +"/DefaultImage/DefaultImage.jpg";
     this.selectedFile = null;
 
     this.EditForm.patchValue({
@@ -127,7 +129,7 @@ export class AdminDashboard implements OnInit {
     fd.append("Gender", this.EditForm.value.gender);
     fd.append("Relation", this.EditForm.value.relation);
 
-    const isPreviewDefault = this.preview.includes('defaultImage') || this.preview.endsWith('/default.png');
+    const isPreviewDefault = this.preview.includes('defaultImage') || this.preview.endsWith('/defaultImage.jpg');
     if (!this.selectedFile && isPreviewDefault) {
       fd.append("removeImage", "true");
     }

@@ -6,7 +6,7 @@
     <form [formGroup]="RegisterForm" (ngSubmit)="submit()">
 
       <div class="mb-3">
-        <label class="form-label fw-semibold">Username</label>
+        <label class="form-label fw-semibold">Username or Mobile no</label>
         <input type="text" class="form-control" placeholder="Enter username" formControlName="Username">
         @if ((Username?.touched || Username?.dirty) && Username?.errors?.['required']) {
         <p class="text-danger">Username is required</p>

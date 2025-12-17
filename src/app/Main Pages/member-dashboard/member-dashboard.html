@@ -21,7 +21,7 @@
         </div>
         <div class="modal-body text-center p-4">
           <img
-            [src]="adminData.profileImage ? 'https://localhost:7093/Images/'+adminData.profileImage : 'assets/defaultImage.jpg'"
+            [src]="adminData.profileImage ? imageBaseUrl +'/Images/'+adminData.profileImage : 'assets/defaultImage.jpg'"
             class="admin-img mb-3" />
           <h4 class="fw-bold admin-name">
             <i class="bi bi-person-circle icon-admin me-1"></i> {{adminData.fname}} {{adminData.lname}}
@@ -49,13 +49,12 @@
       <!-- FAMILY HEAD -->
       <div class="family-head d-flex align-items-center">
         <img
-          [src]="item.profileImage ? 'https://localhost:7093/Images/'+item.profileImage : 'https://localhost:7093/DefaultImage/DefaultImage.jpg'"
+          [src]="item.profileImage ? imageBaseUrl +'/Images/'+item.profileImage : imageBaseUrl +'/DefaultImage/DefaultImage.jpg'"
           class="family-head-img" />
-
-        <div class="ms-3">
+        <div class="ms-3 head-info">
           <h4 class="fw-bold family-head-name m-0">
-            <i class="bi bi-person-fill icon-name me-1"></i> {{item.familyHeadFName | uppercase}} {{item.familyHeadLName
-            | uppercase}}
+            <i class="bi bi-person-fill icon-name me-1"></i> {{item.familyHeadFName | uppercase}}
+            {{item.familyHeadLName | uppercase}}
           </h4>
           <small class="d-block family-head-phone">
             <i class="bi bi-telephone-outbound icon-phone me-1"></i> {{item.phone}}
@@ -79,7 +78,7 @@
             <div class="col-6 col-md-3 col-lg-2" *ngFor="let m of item.members">
               <div class="member-card text-center p-3 shadow-sm">
                 <img
-                  [src]="m.imageUrl && m.imageUrl.toLowerCase() !== 'defaultimage.jpg' ? 'https://localhost:7093/Images/'+m.imageUrl : 'https://localhost:7093/DefaultImage/DefaultImage.jpg'"
+                  [src]="m.imageUrl && m.imageUrl.toLowerCase() !== 'defaultimage.jpg' ? imageBaseUrl +'/Images/'+m.imageUrl : 'https://localhost:7093/DefaultImage/DefaultImage.jpg'"
                   class="member-img mb-2" />
                 <h6 class="fw-bold m-0 member-name">
                   <i class="bi bi-person-bounding-box icon-name me-1"></i> {{m.name | uppercase}}

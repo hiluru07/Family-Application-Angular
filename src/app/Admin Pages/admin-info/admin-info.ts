@@ -5,6 +5,7 @@ import * as bootstrap from 'bootstrap';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from "@angular/router";
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-admin-info',
@@ -18,6 +19,7 @@ export class AdminInfo implements OnInit {
   admin: any = {};
   SelectedFile: File | null = null;
   preview: string = "assets/defaultImage.png";
+  imageBaseUrl = environment.IMAGE_BASE_URL;
 
   @ViewChild('EditModal') EditModal!: ElementRef;
   modal: any;
@@ -40,7 +42,7 @@ export class AdminInfo implements OnInit {
         this.admin = res;
 
         this.preview = res.profileImage
-          ? "https://localhost:7093/Images/" + res.profileImage
+          ? this.imageBaseUrl + "/Images/" + res.profileImage
           : "assets/defaultImage.png";
       });
     });
@@ -76,7 +78,7 @@ export class AdminInfo implements OnInit {
     });
 
     this.preview = data.profileImage
-      ? "https://localhost:7093/Images/" + data.profileImage
+      ? this.imageBaseUrl + "/Images/" + data.profileImage
       : "assets/defaultImage.png";
     console.log("Preview URL:", this.preview);
 

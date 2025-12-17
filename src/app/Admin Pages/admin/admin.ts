@@ -29,17 +29,20 @@ export class Admin {
     this.service.Login(this.LoginForm.value).subscribe({
       next: (res: any) => {
         if (res.role === "Admin") {
+          localStorage.setItem("token", res.token);
+          localStorage.setItem("id", res.id);
+          localStorage.setItem("username", res.user);
+          localStorage.setItem("role", res.role);
           alert("Login Success");
+
+          this.router.navigate(["admin-dashboard"]);
+        } else {
+          alert("Invalid credentials");
         }
-
-        localStorage.setItem("token", res.token);
-        localStorage.setItem("id", res.id);
-        localStorage.setItem("username", res.user);
-        localStorage.setItem("role", res.role);
-
-        this.router.navigate(["admin-dashboard"]);
+      },
+      error: (err) => {
+        alert("Login failed: Invalid username or password");
       }
     });
   }
-
 }

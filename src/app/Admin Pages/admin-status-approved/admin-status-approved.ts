@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Status } from '../../Services/status';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from "@angular/router";
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-admin-status-approved',
@@ -16,6 +17,7 @@ export class AdminStatusApproved implements OnInit{
 
   sapproved:boolean=false;
   srejected:boolean=false;
+  imageBaseUrl = environment.IMAGE_BASE_URL;
 
  ngOnInit(): void {
    this.getAllUser()

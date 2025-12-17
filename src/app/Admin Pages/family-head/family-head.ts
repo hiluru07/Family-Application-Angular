@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from "@angular/router";
 import { FamilyheadData } from '../../Services/familyhead-data';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-family-head',
@@ -13,6 +14,7 @@ export class FamilyHead implements OnInit {
   constructor(private service: FamilyheadData, private route: Router) { }
 
   array: any[] = [];
+  imageBaseUrl = environment.IMAGE_BASE_URL;
 
   ngOnInit(): void {
     this.GetHeadMembers()

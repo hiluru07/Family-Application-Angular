@@ -4,6 +4,7 @@ import * as bootstrap from 'bootstrap';
 import { Userview } from '../../Services/userview';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-user-view',
@@ -20,6 +21,8 @@ export class UserView implements OnInit {
   Lname: string | null = '';
   Phone: string | null = '';
   Email: string | null = '';
+  imageBaseUrl = environment.IMAGE_BASE_URL;
+  
 
   // MEMBERS
   members: any[] = [];
@@ -89,7 +92,7 @@ export class UserView implements OnInit {
     this.Phone = localStorage.getItem('phone');
     this.Email = localStorage.getItem('email');
     const profile = localStorage.getItem('profile');
-    this.profilepath = profile ? 'https://localhost:7093/' + profile : 'assets/defaultImage.jpg';
+    this.profilepath = profile ? this.imageBaseUrl + profile : 'assets/defaultImage.jpg';
   }
 
   loadMembers() {
@@ -106,9 +109,9 @@ export class UserView implements OnInit {
 
   getMemberImage(member: any) {
     if (!member || !member.imageUrl || member.imageUrl === 'DefaultImage.jpg') {
-      return 'https://localhost:7093/DefaultImage/DefaultImage.jpg';
+      return this.imageBaseUrl +'/DefaultImage/DefaultImage.jpg';
     }
-    return 'https://localhost:7093/images/' + member.imageUrl;
+    return this.imageBaseUrl + '/images/' + member.imageUrl;
   }
 
   // ----------------- ADD MEMBER -----------------
@@ -184,7 +187,7 @@ export class UserView implements OnInit {
 
     this.editMemberPreview = (!member.imageUrl || member.imageUrl === 'DefaultImage.jpg')
       ? 'assets/defaultImage.jpg'
-      : 'https://localhost:7093/images/' + member.imageUrl;
+      : this.imageBaseUrl +'/images/' + member.imageUrl;
 
     this.editSelectedFile = null;
     this.editMemberModalInstance = new bootstrap.Modal(this.EditMemberModal.nativeElement);
@@ -311,7 +314,7 @@ export class UserView implements OnInit {
         localStorage.setItem('email', this.EditProfileForm.value.email || '');
         if (res && res.profileImage) {
           localStorage.setItem('profile', res.profileImage);
-          this.profilepath = 'https://localhost:7093/' + res.profileImage;
+          this.profilepath = this.imageBaseUrl + res.profileImage;
         } else {
           this.loadProfileFromLocalStorage();
         }

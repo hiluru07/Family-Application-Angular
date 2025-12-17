@@ -3,6 +3,7 @@ import { MemberDashboardService } from '../../Services/member-dashboard-service'
 import { CommonModule, UpperCasePipe } from '@angular/common';
 import { AdminService } from '../../Services/admin-service';
 import { Loading } from '../../Services/loading';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-member-dashboard',
@@ -12,6 +13,8 @@ import { Loading } from '../../Services/loading';
 })
 export class MemberDashboard implements OnInit {
   constructor(private service: MemberDashboardService, private adminservice: AdminService, private memberservice: MemberDashboardService, private loading: Loading) { }
+
+  imageBaseUrl = environment.IMAGE_BASE_URL;
 
   array: any[] = []
   adminData: any = {}

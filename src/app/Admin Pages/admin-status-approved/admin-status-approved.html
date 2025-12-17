@@ -9,7 +9,7 @@
     <div class="user-card shadow-lg" *ngFor="let i of array; let index = index">
 
       <!-- Profile -->
-      <img [src]="'https://localhost:7093/Images/' + i.profileImage" class="profile-img" />
+      <img [src]=" imageBaseUrl +'/Images/' + i.profileImage" class="profile-img" />
 
       <!-- Info -->
       <div class="info-box">
