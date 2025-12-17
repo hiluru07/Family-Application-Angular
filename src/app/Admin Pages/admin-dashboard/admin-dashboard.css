@@ -7,61 +7,12 @@
   text-align: center;
 }
 
-.header-btn {
-  border-radius: 25px;
-  padding: 7px 18px;
-  font-weight: 500;
-}
+/* ================= ICON COLORS ================= */
+.icon-green { color: #28a745; }
+.icon-red   { color: #ff1a1a; }
+.icon-gold  { color: #ffc107; }
 
-/* ================= CONTACT INFO ICONS ================= */
-.contact-info i {
-  font-size: 1.2rem;
-  margin-right: 4px;
-}
-
-.icon-green   { color: #28a745; }
-.icon-red     { color: #ff1a1a; }
-.icon-blue    { color: #007bff; }
-.icon-gold    { color: #ffc107; }
-.icon-orange  { color: #fd7e14; }
-.icon-purple  { color: #6f42c1; }
-.icon-pink    { color: #e83e8c; }
-
-/* ================= ROLE + ADD BUTTON ================= */
-.role-add-box {
-  min-width: 130px;
-  background: #f8f9fa;
-  border-radius: 12px;
-  padding: 6px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-}
-
-.role-box {
-  font-size: 0.9rem;
-}
-
-.add-btn {
-  font-size: 0.85rem;
-  padding: 3px 6px;
-}
-
-/* ================= FAMILY CARD ================= */
-.family-card {
-  background: #ffffff;
-  border-radius: 12px;
-  overflow: hidden;
-  border-left: 5px solid #7F00FF;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin-bottom: 15px;
-}
-
-.family-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-}
-
-/* ================= FAMILY HEAD IMAGE ================= */
+/* ================= IMAGE ================= */
 .family-head-img {
   width: 75px;
   height: 75px;
@@ -71,87 +22,77 @@
   box-shadow: 0px 4px 10px rgba(0,0,0,0.25);
 }
 
-/* ================= MEMBER IMAGE ================= */
-.member-img {
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1.5px solid #fff;
-  box-shadow: 0px 3px 8px rgba(0,0,0,0.2);
+/* ================= CONTACT ================= */
+.contact-info div {
+  font-size: 0.9rem;
 }
 
-/* ================= FAMILY HEAD ROW ================= */
-.family-head-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* ================= ROLE BOX (desktop) ================= */
+.role-add-box {
+  min-width: 150px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 6px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
 }
 
-/* ================= RESPONSIVE FIXES ================= */
+/* ================= MOBILE ADD BTN ================= */
+.add-btn-mobile {
+  width: 100%;
+  font-size: 0.9rem;
+  padding: 6px;
+}
 
-/* Mobile < 600px */
+/* ================= RESPONSIVE ================= */
+
+/* MOBILE < 600px */
 @media (max-width: 600px) {
   .family-head-card {
-    flex-direction: column !important;
+    flex-direction: column;
     text-align: center;
-    justify-content: center;
-    padding: 15px !important;
-    gap: 10px;
-  }
-
-  .family-head-img {
-    width: 65px;
-    height: 65px;
-  }
-
-  .role-add-box {
-    width: 100%;
-    text-align: center;
-  }
-
-  .add-btn {
-    font-size: 0.75rem;
-  }
-
-  .member-img {
-    width: 50px;
-    height: 50px;
-  }
-
-  .ui-header {
-    padding: 10px;
-    text-align: center;
-  }
-
-  .header-btn {
-    font-size: 0.75rem;
-    padding: 5px 12px;
-  }
-}
-
-/* Tablet 600 – 992px */
-@media (min-width: 600px) and (max-width: 992px) {
-
-  .family-head-card {
-    flex-direction: row;
-    gap: 10px;
-  }
-
-  .member-img {
-    width: 60px;
-    height: 60px;
   }
 
   .family-head-img {
     width: 70px;
     height: 70px;
+    margin-bottom: 8px;
+  }
+
+  .head-info-box {
+    text-align: center;
+  }
+
+  .contact-info div {
+    display: block;
+    margin: 3px 0;
+  }
+
+  .role-add-box {
+    display: none !important;
+  }
+
+  .add-btn-mobile {
+    display: block !important;
+  }
+
+  .role-box-mobile {
+    display: block;
+    font-weight: bold;
+    font-size: 0.9rem;
   }
 }
 
-/* Large screens > 1200px */
-@media (min-width: 1200px) {
-  .family-card {
-    margin-bottom: 18px;
+/* TABLET 600 - 992px */
+@media (min-width: 600px) and (max-width: 992px) {
+  .family-head-img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* DESKTOP > 992px */
+@media (min-width: 992px) {
+  .add-btn-mobile {
+    display: none;
   }
 }
