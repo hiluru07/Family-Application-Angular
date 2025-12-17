@@ -57,5 +57,6 @@
 
   .other-links {
     gap: 8px;
+    width: 100%;
   }
 }
