@@ -6,6 +6,16 @@
   text-decoration: none;
 }
 
+.nav-underline::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #fff;
+  left: 0;
+  bottom: 0;
+  transition: width 0.3s ease-in-out;
+}
 
 .nav-underline:hover::after,
 .nav-underline.active::after {
