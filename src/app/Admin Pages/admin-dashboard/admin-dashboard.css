@@ -93,7 +93,7 @@
   padding: 8px;
 }
 
-/* ================= FAMILY HEAD TABLE ROW SHADOW ================= */
+/* ================= FAMILY HEAD ROW ================= */
 .family-head-row {
   background-color: #fff;
   border-radius: 10px;
@@ -152,7 +152,7 @@
   }
 }
 
-/* Tablet between 600 and 992px */
+/* Tablet 600 – 992px */
 @media (min-width: 600px) and (max-width: 992px) {
 
   .family-head-row {
