@@ -1,11 +1,13 @@
 <nav class="navbar py-3" style="background:linear-gradient(90deg,#001f54,#0099ff);">
-  <div class="container d-flex justify-content-between align-items-center flex-nowrap flex-column flex-sm-row">
-    <!-- Brand -->
-    <a class="navbar-brand text-white fw-bold fs-4 m-0 brand-size">Vavanna Family</a>
+  <div class="container d-flex justify-content-between align-items-center flex-column flex-sm-row">
+    <!-- Top: Brand + Member link -->
+    <div class="d-flex justify-content-between w-100 align-items-center">
+      <a class="navbar-brand text-white fw-bold fs-4 m-0 brand-size">Vavanna Family</a>
+      <a class="nav-link nav-underline text-white ms-3 d-none d-sm-block" routerLink="/member">Members</a>
+    </div>
 
-    <!-- Navigation -->
-    <ul class="navbar-nav d-flex flex-row flex-sm-row flex-column flex-sm-nowrap gap-2 nav-items">
-      <li><a class="nav-link nav-underline text-white" routerLink="/member">Members</a></li>
+    <!-- Bottom / Mobile: Admin, Login, Register -->
+    <ul class="navbar-nav d-flex flex-column flex-sm-row gap-2 mt-2 mt-sm-0 w-100 justify-content-center mobile-nav">
       <li><a class="btn btn-light nav-btn" routerLink="/admin">Admin</a></li>
       <li><a class="btn btn-outline-light nav-btn" routerLink="/login">Login</a></li>
       <li><a class="btn btn-outline-light nav-btn" routerLink="/register">Register</a></li>

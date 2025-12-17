@@ -27,39 +27,31 @@
   border-radius: 50px;
 }
 
-/* Mobile styles */
+/* Mobile specific */
 @media (max-width: 576px) {
   .brand-size {
     font-size: 18px !important;
-    margin-bottom: 10px;
   }
 
-  .nav-items {
+  /* Hide Members in mobile top row (we can move it if needed) */
+  .navbar .nav-link.nav-underline {
+    display: none;
+  }
+
+  /* Mobile bottom nav buttons */
+  .mobile-nav {
     flex-direction: column;
     width: 100%;
+    gap: 8px;
   }
 
-  .nav-items li {
-    width: 100%;
+  .mobile-nav li {
+    width: 90%;
+    margin: 0 auto;
     text-align: center;
   }
 
   .nav-btn {
-    width: 90%;
-    margin: 5px auto;
+    width: 100%;
   }
-
-  .nav-underline {
-    text-align: center;
-  }
-}
-
-/* Prevent scrollbar for navbar flex container */
-.navbar .d-flex {
-  flex-wrap: nowrap;
-  overflow-x: auto;
-}
-
-.navbar .d-flex::-webkit-scrollbar {
-  display: none;
 }
