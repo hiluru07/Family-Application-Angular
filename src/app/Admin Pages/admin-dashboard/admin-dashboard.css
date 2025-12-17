@@ -110,6 +110,10 @@
     height: 65px;
   }
 
+  .role-add-box {
+    width: 100%;
+    text-align: center;
+  }
 
   .add-btn {
     font-size: 0.75rem;
