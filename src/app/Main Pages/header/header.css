@@ -66,21 +66,29 @@
     padding: 8px 0;
   }
 }
-@keyframes wiggle {
-  0% { transform: rotate(0deg); }
-  25% { transform: rotate(-3deg); }
-  50% { transform: rotate(3deg); }
-  75% { transform: rotate(-3deg); }
-  100% { transform: rotate(0deg); }
-}
 
-.members-link:hover {
-  animation: wiggle 0.5s ease-in-out;
-}
 
-/* Keep your underline effect as is */
-.nav-underline::after {
-  transition: width 0.3s ease-in-out;
-}
+/* Mobile bottom links different bg */
+@media (max-width: 576px) {
+  .bottom-links {
+    background: #004b7a; /* dark teal */
+    padding: 10px;
+    border-radius: 8px;
+  }
 
+  .bottom-links a {
+    background: white !important;  /* button bg */
+    color: #004b7a !important;     /* text color */
+    border-radius: 6px;
+    font-weight: 600;
+  }
+
+  .bottom-links a:nth-child(2) {
+    background: #f1f1f1 !important;
+  }
+
+  .bottom-links a:nth-child(3) {
+    background: #e3e3e3 !important;
+  }
+}
 
