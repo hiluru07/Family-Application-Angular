@@ -27,12 +27,34 @@
   border-radius: 50px;
 }
 
+/* Mobile styles */
 @media (max-width: 576px) {
   .brand-size {
     font-size: 18px !important;
+    margin-bottom: 10px;
+  }
+
+  .nav-items {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-items li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-btn {
+    width: 90%;
+    margin: 5px auto;
+  }
+
+  .nav-underline {
+    text-align: center;
   }
 }
 
+/* Prevent scrollbar for navbar flex container */
 .navbar .d-flex {
   flex-wrap: nowrap;
   overflow-x: auto;
