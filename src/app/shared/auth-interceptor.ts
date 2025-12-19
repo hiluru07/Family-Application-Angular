@@ -3,6 +3,7 @@ import { Inject, inject } from '@angular/core';
 import { Loading } from '../Services/loading';
 import { catchError, finalize, throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
@@ -21,7 +22,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 export const loadingInterceptor: HttpInterceptorFn = (req, next) => {
   const loadservice = inject(Loading);
 
-  const skipUrl = "https://localhost:7093/api/ShowAllMembers/ShowAllMembers";
+  const skipUrl = environment.API_BASE_URL;
 
   const skip = req.url.startsWith(skipUrl);
 
