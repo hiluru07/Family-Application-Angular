@@ -18,6 +18,7 @@ export class MemberDashboard implements OnInit {
 
   array: any[] = []
   adminData: any = {}
+  result:boolean = false;
 
   AdminInfo() {
     this.adminservice.AdminInfo().subscribe(res => {
@@ -25,10 +26,18 @@ export class MemberDashboard implements OnInit {
     })
   }
   searchData(searchText: string) {
-    this.memberservice.Search(searchText).subscribe(res => {
+  this.memberservice.Search(searchText).subscribe({
+    next: (res) => {
       this.array = res;
-    });
-  }
+    },
+    error: (err) => {
+      if (err.status === 404) {
+        this.array = [];
+      }
+    }
+  });
+}
+
   ngOnInit(): void {
     this.loading.show();
     this.service.ShowAllMembers().subscribe(data => {

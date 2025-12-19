@@ -185,7 +185,7 @@
   white-space: nowrap;
 }
 
-/* MOBILE VIEW FIX */
+/* MOBILE VIEW */
 @media (max-width: 576px) {
   .family-head {
     justify-content: center;
@@ -248,7 +248,6 @@
     font-size: 0.85rem;
 }
 
-/* RELATION TAG */
 .relation-pill {
     display: inline-block;
     background: linear-gradient(135deg, #ff3cac 0%, #784ba0 50%, #2b86c5 100%);
@@ -258,4 +257,9 @@
     border-radius: 20px;
     margin-top: 6px;
     box-shadow: 0 3px 10px rgba(255, 0, 120, 0.3);
+}
+.no-data {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
 }
