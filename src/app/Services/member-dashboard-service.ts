@@ -17,6 +17,6 @@ export class MemberDashboardService  {
   }
   Search(searchText: string): Observable<any>
   {
-  return this.http.get<any>(`${this.baseurl}/ShowAllMembers/search?search=${searchText}`);
+  return this.http.get<any>(`${this.baseurl}/ShowAllMembers?search=${searchText}`);
   }
 }
